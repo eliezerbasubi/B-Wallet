@@ -25,6 +25,7 @@ import Send from "../screens/Send";
 import styles from "../styles";
 import ModalHeaderRight from "../components/ModalHeaderRight";
 import Receive from "../screens/Receive";
+import TokenDetails from "../screens/TokenDetails";
 
 export default function Navigation({
   colorScheme,
@@ -59,6 +60,7 @@ const RootNavigator = () => {
         component={Onboarding}
         options={{ headerShown: false }}
       />
+      <Stack.Screen name="TokenDetails" component={TokenDetails} />
 
       <Stack.Group
         screenOptions={{

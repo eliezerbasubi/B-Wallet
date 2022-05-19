@@ -13,6 +13,7 @@ const linking: LinkingOptions<RootStackParamList> = {
             screens: {
               Home: "home",
               Send: "send",
+              TokenDetails: "tokenDetails",
             },
           },
           TradeTab: {

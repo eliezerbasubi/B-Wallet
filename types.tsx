@@ -26,6 +26,7 @@ export type RootStackParamList = {
   Trade: undefined;
   Send: undefined;
   Receive: undefined;
+  TokenDetails: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

@@ -14,6 +14,7 @@ import { FONTS, SHADOWS, SIZES } from "../constants/Assets";
 import Colors from "../constants/Colors";
 import { convertTokenToDollars } from "../helpers";
 import { CurrentTokenState } from "../atoms";
+import { useNavigation } from "@react-navigation/native";
 
 interface IProps {
   showDetails?: boolean;
@@ -107,6 +108,7 @@ const TokenCard = ({
 
 const WalletTokens = ({ showDetails, onPress }: IProps) => {
   const currentToken = useRecoilValue(CurrentTokenState);
+  const navigator = useNavigation();
 
   const tokens = Object.values(TOKENS).reduce((acc, token) => {
     if (token.name === currentToken.name) {
@@ -119,7 +121,11 @@ const WalletTokens = ({ showDetails, onPress }: IProps) => {
     <FlatList
       data={tokens}
       renderItem={({ item }) => (
-        <TokenCard item={item} showDetails={showDetails} onPress={onPress} />
+        <TokenCard
+          item={item}
+          showDetails={showDetails}
+          onPress={() => navigator.navigate("TokenDetails", item as any)}
+        />
       )}
       showsVerticalScrollIndicator={false}
       keyExtractor={({ id }) => `${id}`}
