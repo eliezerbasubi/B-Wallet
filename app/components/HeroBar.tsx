@@ -12,7 +12,7 @@ import {
 import styles from "../styles";
 import Vector from "../assets/vectors";
 import { USER_DATA } from "../constants/Dummies";
-import { convertTokenToDollars, truncate } from "../helpers";
+import { formatToUSD, truncate } from "../helpers";
 import Colors from "../constants/Colors";
 import TokenSelector from "./TokenSelector";
 import { useRecoilValue } from "recoil";
@@ -105,10 +105,7 @@ const HeroBar = () => {
                 }}
               >
                 {showAmount
-                  ? `US ${convertTokenToDollars(
-                      USER_DATA.amount,
-                      currentToken.name
-                    )}`
+                  ? formatToUSD(USER_DATA.amount, currentToken.name)
                   : "******"}
               </Text>
 

@@ -12,7 +12,7 @@ import { TOKENS } from "../constants/Dummies";
 import { IToken } from "types";
 import { FONTS, SHADOWS, SIZES } from "../constants/Assets";
 import Colors from "../constants/Colors";
-import { convertTokenToDollars } from "../helpers";
+import { formatToUSD } from "../helpers";
 import { CurrentTokenState } from "../atoms";
 import { useNavigation } from "@react-navigation/native";
 
@@ -73,7 +73,7 @@ const TokenCard = ({
                 marginRight: 10,
               }}
             >
-              ${convertTokenToDollars(1, item.name)}
+              {formatToUSD(1, item.name, "$")}
             </Text>
             <Text
               style={{

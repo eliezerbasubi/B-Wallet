@@ -11,7 +11,7 @@ import { SIZES, FONTS } from "../constants/Assets";
 import COLORS from "../constants/Colors";
 import TokenSelector from "../components/TokenSelector";
 import Vector from "../assets/vectors";
-import { convertTokenToDollars } from "../helpers";
+import { formatToUSD } from "../helpers";
 import { TChains } from "types";
 import { useRecoilValue } from "recoil";
 import { CurrentTokenState } from "../atoms";
@@ -83,7 +83,7 @@ const SwapItem = ({ defaultChain }: { defaultChain?: TChains }) => {
           color={COLORS.black50}
         />
         <Text style={{ fontFamily: FONTS.monoLight, color: COLORS.black50 }}>
-          ${convertTokenToDollars(+value, selectedToken as TChains)}
+          {formatToUSD(+value, selectedToken as TChains, "$")}
         </Text>
       </View>
     </View>

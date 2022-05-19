@@ -1,4 +1,5 @@
 import {
+  AntDesign,
   Feather,
   FontAwesome,
   Ionicons,
@@ -6,7 +7,12 @@ import {
 } from "@expo/vector-icons";
 import { StyleProp, TextStyle } from "react-native";
 
-type TVector = "feather" | "fontawesome" | "ionicons" | "materialCI";
+type TVector =
+  | "feather"
+  | "fontawesome"
+  | "ionicons"
+  | "materialCI"
+  | "antDesign";
 
 interface IProps {
   size?: number;
@@ -41,14 +47,10 @@ const Vector = ({
   }
 
   if (as === "materialCI") {
-    return (
-      <MaterialCommunityIcons
-        name={name as any}
-        size={size}
-        color={color}
-        onPress={onPress}
-      />
-    );
+    return <MaterialCommunityIcons {...props} />;
+  }
+  if (as === "antDesign") {
+    return <AntDesign {...props} />;
   }
   return <FontAwesome {...props} />;
 };

@@ -34,3 +34,11 @@ export const convertTokenToDollars = (price: number, token: TChains) => {
   const total = price * chain.priceUSD;
   return new Intl.NumberFormat().format(total);
 };
+
+export const formatToUSD = (
+  price: number,
+  token: TChains,
+  sign: string = "US "
+) => {
+  return `${sign}${convertTokenToDollars(price, token)}`;
+};

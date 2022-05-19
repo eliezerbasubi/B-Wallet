@@ -6,7 +6,7 @@ import { ITransaction, TActivity, TChains } from "types";
 import { FONTS, SHADOWS, SIZES } from "../constants/Assets";
 import Vector from "../assets/vectors";
 import Colors from "../constants/Colors";
-import { dateFormat, convertTokenToDollars } from "../helpers";
+import { dateFormat, formatToUSD } from "../helpers";
 
 interface IProps {
   item: ITransaction;
@@ -151,7 +151,7 @@ const TransactionCard = ({ item }: IProps) => {
               alignSelf: "flex-end",
             }}
           >
-            ${convertTokenToDollars(item.amount || 0, item.token)}
+            {formatToUSD(item.amount || 0, item.token, "$")}
           </Text>
         </View>
       )}
