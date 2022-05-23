@@ -1,5 +1,7 @@
-import { IToken, ITransaction, IUser, TChains } from "types";
+import { IToken, ITransaction, IUser, Prices, TChains } from "types";
 import { IMAGES } from "./Assets";
+import { data as ReqData } from "../helpers/data.json";
+import { buildGraph } from "../helpers";
 
 export const USER_DATA: IUser = {
   username: "@satoshi",
@@ -81,4 +83,15 @@ export const TRANSACTIONS: ITransaction[] = [
     token: "Polygon",
     date: "2021/03/30",
   },
+];
+
+const values = ReqData.prices as Prices;
+
+export const PRICE_PERIODS: { label: string; value: number; data: any }[] = [
+  { label: "1H", value: 0, data: buildGraph(values.hour, "Last Hour") },
+  { label: "1D", value: 1, data: buildGraph(values.day, "Today") },
+  { label: "1W", value: 2, data: buildGraph(values.week, "Week") },
+  { label: "1M", value: 3, data: buildGraph(values.month, "Last Month") },
+  { label: "1Y", value: 4, data: buildGraph(values.year, "This Year") },
+  { label: "All", value: 5, data: buildGraph(values.all, "All time") },
 ];

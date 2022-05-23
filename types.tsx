@@ -90,3 +90,42 @@ export interface IWalletTab {
   id: number;
   route: any;
 }
+
+export interface Amount {
+  amount: string;
+  currency: string;
+  scale: string;
+}
+
+export interface PercentChange {
+  hour: number;
+  day: number;
+  week: number;
+  month: number;
+  year: number;
+}
+
+export interface LatestPrice {
+  amount: Amount;
+  timestamp: string;
+  percent_change: PercentChange;
+}
+
+export type PriceList = [string, number][];
+export interface DataPoints {
+  percent_change: number;
+  prices: PriceList;
+}
+
+export interface Prices {
+  latest: string;
+  latest_price: LatestPrice;
+  hour: DataPoints;
+  day: DataPoints;
+  week: DataPoints;
+  month: DataPoints;
+  year: DataPoints;
+  all: DataPoints;
+}
+
+export type GraphIndex = 0 | 1 | 2 | 3 | 4;
